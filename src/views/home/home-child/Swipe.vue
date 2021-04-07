@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  // import {navSkip, clearAway, start, initialize, activity, skip} from './swipe.js'
 
   export default {
     name: 'Swipe',
@@ -155,6 +154,7 @@
     position: relative;
     left: 0;
     top: 0;
+    padding-top: 44px;
   }
 
   .img-vessel {
