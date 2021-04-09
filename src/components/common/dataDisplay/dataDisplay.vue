@@ -2,7 +2,7 @@
   <!-- 依据请求到数据量来生成一页的内容 -->
   <div class="data-display" key=''>
     <div class="data-display-item" v-for="obj in good.list" >
-      <img :src="obj.imgShow">
+      <img :src="obj.imgShow" @load="imgLoad()">
       <p>{{obj.imgDescribe}}</p>
       <div class="data-display-item-price">
         <span>￥{{obj.discountPrices}}</span>
@@ -21,6 +21,11 @@
     props: {
       good: {
         type: Object
+      }
+    },
+    methods: {
+      imgLoad() {
+        this.$emit('imgLoad')
       }
     }
   }

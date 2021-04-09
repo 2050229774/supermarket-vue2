@@ -46,8 +46,6 @@
     display: flex;
     width: 100%;
     margin-bottom: 6px;
-    position : sticky ;
-    top : 44px ;
     background-color: #ffffff;
     .tab-control-child {
       flex: 1;
