@@ -148,7 +148,6 @@
   #external-vessel {
     /* 确定图片和导航容器宽高及位置 */
     width: 100%;
-    height: 200px;
     overflow: hidden;
     /* 设置定位为js提供图片与父元素的距离 offsetleft*/
     position: relative;

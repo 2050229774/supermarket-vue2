@@ -44,7 +44,6 @@
     methods: {
       active() {
         this.$router.replace(this.link)
-        
       }
     }
   }

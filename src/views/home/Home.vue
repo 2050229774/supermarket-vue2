@@ -3,8 +3,9 @@
     <nav-bar>
       <template v-slot:center>智能商场</template>
     </nav-bar>
+    <tab-control :namee="item" mtop="44px" @thisActive="skip($event)" ref='tabControl1' v-show="tabts" ></tab-control>
     <bscroll @scroll="conceal($event)" ref="bscroll">
-      <swipe :speed="speedd" :stopTime="stopTimee">
+      <swipe class="heig" :speed="speedd" :stopTime="stopTimee">
         <swipen-img way="https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g6/M00/0D/02/ChMkKmBdVPOIBjY1ABrPpgW1TcMAAMGvwLS3r4AGs--673.jpg" />
         <swipen-img way="https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g6/M00/0D/02/ChMkKmBdVOyIFHpqACAzMosIyoQAAMGvwESmdsAIDNK017.jpg" />
         <swipen-img way="https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g6/M00/0B/00/ChMkKmBamS-IdsvVABQVFnzWDOwAAL-UACX_LYAFBUu002.jpg" />
@@ -13,8 +14,8 @@
       </swipe>
       <recommend :item="itemm" idth="60px" />
       <recommend :item="itemmz" idth="30px" />
-      <tab-control :namee="item" @thisActive="skip($event)"></tab-control>
-      <data-display :good="skipGoods" @imgLoad="hgRefresh(vm,$refs.bscroll.refresh,1)"></data-display>
+      <tab-control :namee="item" @thisActive="skip($event)" ref='tabControl2'></tab-control>
+      <data-display :good="skipGoods" @imgLoad="hgRefresh(vm,$refs.bscroll.refresh,1)" ></data-display>
     </bscroll>
     <back-top @click.native="BackTop()" v-show="seat"></back-top>
   </div>
@@ -60,7 +61,8 @@
         skipGoods: goods.pop,
         seat: false,
         timer: null,
-        vm: this
+        vm: this,
+        tabts: false
       }
     },
     components: {
@@ -82,12 +84,16 @@
         } else if (event === 'sell') {
           this.skipGoods = this.goods.sell;
         }
+        this.$refs.tabControl1.itemactive = event;
+        this.$refs.tabControl2.itemactive = event;
       },
       BackTop() {
         this.$refs.bscroll.scrollTo(0, 0)
       },
       conceal(position) {
-        this.seat = (-position.y) > 800
+        // 到达指定位置显示或消失置顶按钮
+        this.seat = (-position.y) > 800;
+        this.tabts = (-position.y) > this.$refs.tabControl2.$el.offsetTop
       },
       hgRefresh(vm,func,delay) {
           if(vm.timer) clearTimeout(vm.timer);
@@ -110,5 +116,10 @@
   .home {
     position: relative;
     height: 100vh;
+    overflow: hidden;
+  }
+  
+  .heig {
+    height: 200px;
   }
 </style>

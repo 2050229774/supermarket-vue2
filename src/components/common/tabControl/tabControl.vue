@@ -1,7 +1,7 @@
 <template>
   <div class="tab-control" :style="stylee">
-    <div class="tab-control-child" v-for="(i,name,index) in namee" @click="activef(index,name)">
-      <span :class="{active: index === itemactive}">{{i}}</span>
+    <div class="tab-control-child" v-for="(i,name) in namee" @click="activef(name)">
+      <span :class="{active: name === itemactive}">{{i}}</span>
     </div>
   </div>
 </template>
@@ -14,9 +14,10 @@
         stylee: {
           height: this.altitude,
           lineHeight: this.altitude,
-          backColor: this.backgroundColor
+          backgroundColor: this.backgroundColor,
+          marginTop: this.mtop
         },
-        itemactive: 0
+        itemactive: 'pop'
       }
     },
     props: {
@@ -28,13 +29,17 @@
         type: String,
         default: '#ffffff'
       },
+      mtop: {
+        type: String,
+        default: '0'
+      },
       namee: {
         type: Object
       }
     },
     methods:{
-      activef(index,name){
-        this.itemactive = index;
+      activef(name){
+        this.itemactive = name;
         this.$emit('thisActive',name)
       }
     }
@@ -45,8 +50,11 @@
   .tab-control {
     display: flex;
     width: 100%;
-    margin-bottom: 6px;
+    padding-bottom: 8px;
+    margin-bottom: 2px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 100;
     .tab-control-child {
       flex: 1;
       text-align: center;
@@ -56,6 +64,7 @@
       border-bottom: solid 2px #ffaaff;
       padding: 0 10px;
       padding-bottom: 6px;
+
     }
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <!-- 依据请求到数据量来生成一页的内容 -->
   <div class="data-display" key=''>
-    <div class="data-display-item" v-for="obj in good.list" >
+    <div class="data-display-item" v-for="obj in good.list" @click="itemClick(obj.iid)" >
       <img :src="obj.imgShow" @load="imgLoad()">
       <p>{{obj.imgDescribe}}</p>
       <div class="data-display-item-price">
@@ -26,8 +26,11 @@
     methods: {
       imgLoad() {
         this.$emit('imgLoad')
+      },
+      itemClick(iid){
+        this.$router.push('/details'+iid.name)
       }
-    }
+    },
   }
 </script>
 

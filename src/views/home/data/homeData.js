@@ -57,13 +57,19 @@ export const goods = {
       imgDescribe: 'PRICH2021年夏季新款气质淑女开叉设计显瘦碎花连衣裙PROWB6315N',
       discountPrices: '499.00',
       realPrice: '998.00',
-      shopName: 'PRICH官方旗舰店'
+      shopName: 'PRICH官方旗舰店',
+      iid: {
+        name: 'csgn3'
+      }
     }, {
       imgShow: 'https://img.alicdn.com/imgextra/i2/11114191/O1CN01UeEfBd1gpWUz4EQhO_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
       imgDescribe: 'Q货！双倍气质 好版型！口袋小西装外套女YM307',
       discountPrices: '398.00',
       realPrice: '398.00',
-      shopName: '锐雪加'
+      shopName: '锐雪加',
+      iid: {
+        name: 'csgn4'
+      }
     }, {
       imgShow: 'https://img.alicdn.com/imgextra/i1/18327577/O1CN01UARSlb25qJehkys1n_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
       imgDescribe: 'ADA MISS春装新品｜Du家设计宽肩单排扣超大款米黄宽松西装外套女',
