@@ -1,9 +1,9 @@
 <template>
   <div id="details-bar">
     <div id="details-bar-left">
-      <div><img src="../../../assets/img/details/客服.png"><div>客服</div></div>
-      <div><img src="../../../assets/img/details/店铺.png"><div>店铺</div></div>
-      <div><img src="../../../assets/img/details/收藏.png"><div>收藏</div></div>
+      <div><img src="~assets/img/details/客服.png"><div>客服</div></div>
+      <div><img src="~assets/img/details/店铺.png"><div>店铺</div></div>
+      <div><img src="~assets/img/details/收藏.png"><div>收藏</div></div>
     </div>
     <div id="details-bar-vehicle" @click="add()">加入购物车</div>
     <div id="details-bar-buy">购买</div>
@@ -29,14 +29,15 @@
     bottom: 0;
     height: 50px;
     padding: 5px 0;
-    background-color: #f0f0f0;
+    background-color: $grayBackground;
     border-top: solid 1px #cecece;
     #details-bar-left {
       flex: 2;
       display: flex;
       div {
          flex: 1;
-         font-size: 13px;
+         font-size: $medium;
+         font-weight: 300;
          text-align: center;
          img {
            width: 35%;
@@ -51,7 +52,7 @@
       height: 35px;
       line-height: 35px;
       font-size: 13px;
-      color: #ffffff;
+      color: $whiteBackground;
       font-weight: 200;
     }
     #details-bar-vehicle {

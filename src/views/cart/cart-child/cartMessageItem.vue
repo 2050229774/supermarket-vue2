@@ -1,8 +1,8 @@
 <template>
   <div class="cart-item" @click="add()">
     <div class="cart-item-select">
-      <img v-if="yn" src="../../../assets/img/cart/15-圆圈未选.png">
-      <img v-else src="../../../assets/img/cart/选中.png" alt="">
+      <img v-if="yn" src="~assets/img/cart/15-圆圈未选.png">
+      <img v-else src="~assets/img/cart/选中.png" alt="">
     </div>
     <div class="cart-item-img">
       <img :src="cartItem.imgShow">
@@ -46,7 +46,6 @@
     },
     mounted() {
       this.$root.Bus.$on('checkAll',content=>{
-        console.log(content);
         this.yn = content;
         this.heji()
       })
@@ -54,9 +53,7 @@
       this.$root.Bus.$on('deletes',()=>{
         if(this.yn == false){
           // 选中情况下 获取数组下标提交到vuex删除数据
-          console.log('删除')
           this.$store.commit("deletes",this.$store.state.carlist.indexOf(this.cartItem))
-          console.log()
         }
       })
     }
@@ -66,7 +63,7 @@
 <style lang="scss" scoped>
   .cart-item {
     height: 150px;
-    background-color: #ffffff;
+    background-color: $whiteBackground;
     margin: 20px 10px;
     border-radius: 20px;
     display: flex;
@@ -98,7 +95,7 @@
       div:nth-child(2) {
         position: absolute;
         bottom: 10px;
-        color: #ff0000;
+        color: $nacarat;
         span {
           font-size: 23px;
         }

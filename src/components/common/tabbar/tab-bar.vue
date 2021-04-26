@@ -10,10 +10,10 @@
   }
 </script>
 
-<style >
+<style lang="scss">
   #tab-bar {
     display: flex;
-    background-color: #EEEEEE;
+    background-color: $grayBackground;
     position: fixed;
     left: 0;
     right: 0;

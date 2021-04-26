@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 
 new Vue({
   data:{
-　　　　Bus
+	  Bus
   },
   router,
   store,

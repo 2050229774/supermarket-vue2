@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     carlist:[],
-    carlistadd: 0
+    carlistadd: 0,
+    carBoole: []
   },
   mutations: {
     addCar(state,li){
@@ -19,9 +20,7 @@ export default new Vuex.Store({
       state.carlistadd = add
     },
     deletes(state,i) {
-      console.log("执行",i)
-      delete state.carlist[i]
-      console.log(state.carlist)
+      state.carlist.splice(i,1)
     }
   },
   actions: {
@@ -29,7 +28,6 @@ export default new Vuex.Store({
       let index = context.state.carlist.indexOf(li);
       let add = 0;
 
-      console.log(index,context.state.carlist)
       if(index != -1){
         context.commit('carConter',index)
       }else{

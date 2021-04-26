@@ -29,7 +29,8 @@
   width: 100%;
   display: flex;
   padding: 10px 0;
-  border-bottom: 5px solid #EEEEEE;
+  border-bottom: 5px solid $grayBackground;
+  font-size: $medium;
   .recommend-nav-i {
     flex: 1;
     a {
@@ -43,7 +44,8 @@
     }
     div {
       text-align: center;
-      color: #F4C76B;
+      color: $subject;
+      margin-top: 3px;
     }
   }
 }

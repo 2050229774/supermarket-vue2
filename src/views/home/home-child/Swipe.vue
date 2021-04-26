@@ -1,5 +1,5 @@
 <template>
-  <div id="external-vessel" ref="external-vessel">
+  <div id="external-vessel" class="swipe" ref="external-vessel">
     <!-- 图片展示部分 -->
     <div class="img-vessel" ref="img-vessel">
       <slot></slot>

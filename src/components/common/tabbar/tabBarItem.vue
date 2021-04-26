@@ -21,28 +21,30 @@
       }
     },
     props: {
+      // 文字颜色
       color: {
         type: String,
         default: 'orange'
       },
+      // 路由目标
       link: String
     },
     computed: {
-	  isActive() {
-		return this.$route.path.indexOf(this.link) !== -1
-	  },
+      isActivefn() {
+        // 是否是当前路由
+        return this.$route.path.indexOf(this.link) !== -1
+      },
       atPresent() {
-		if(this.isActive) {
-			this.isactive = true
-		}
-		else {
-			this.isactive = false
-		}
-        return this.isActive ? {color: this.color} : {}
+        // 当路由路径改变，动态修改值
+        this.isactive = this.isActivefn ? this.isactive = true : this.isactive = false;
+        return this.isActivefn ? {
+          color: this.color
+        } : {};
       }
     },
     methods: {
       active() {
+        // 路由跳转
         this.$router.replace(this.link)
       }
     }
@@ -55,12 +57,13 @@
     text-align: center;
     height: 49px;
     align-self: center;
-    font-size: 16px;
-	
-	img {
-	  width: 20px;
-	  height: 20px;
-	  margin-top: 3px;
-	}
+    font-size: $medium;
+    font-weight: 200;
+    
+    img {
+      width: 25px;
+      height: 25px;
+      margin-top: 3px;
+    }
   }
 </style>

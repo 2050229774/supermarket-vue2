@@ -2,7 +2,7 @@
     <div id="detail">
       <details-nav-tab ref="detailsNavBar" @thisActive="active($event)"></details-nav-tab>
       <bscroll ref="scrool" @scroll="conceal($event)">
-        <swipe class="hxx">
+        <swipe>
           <swipen-img :way="src" v-for="src in iid.carouselImg" ></swipen-img>
         </swipe>
         <company-data :CompanyDatas="iid"></company-data>
@@ -14,15 +14,16 @@
       </bscroll>
       <back-top @click.native="BackTop()" v-show="seat"></back-top>
       <details-bar @addz="addzg()"></details-bar>
+      <tooltip tooltipData="添加成功,在购物车等你呦" v-show="tooltipId"></tooltip>
     </div>
-
 </template>
 
 <script>
   import Swipe from '../home/home-child/Swipe.vue'
   import SwipenImg from '../home/home-child/SwipeImg.vue'
-  import Bscroll from '../../components/common/bscroll/bscroll.vue'
-  import BackTop from '../../components/common/BackTop/BackTop.vue'
+  import Bscroll from 'components/common/bscroll/bscroll.vue'
+  import BackTop from 'components/common/BackTop/BackTop.vue'
+  import Tooltip from 'components/common/Tooltip/tooltip.vue'
 
   import detailsNavTab from './details-child/detailsNavBar.vue'
   import CompanyData from './details-child/CompanyData.vue'
@@ -46,7 +47,8 @@
         parameterTop: null,
         shopImgsTop: null,
         recommendTop: null,
-        catData: {}
+        catData: {},
+        tooltipId: false
       }
     },
     components: {
@@ -61,8 +63,8 @@
       parameter,
       recommend,
       BackTop,
-      detailsBar
-
+      detailsBar,
+      Tooltip
     },
     created() {
       this.iid = 'this.'+this.$route.params.iid
@@ -80,6 +82,7 @@
         }
       },
       BackTop() {
+        // 回到顶部
         this.$refs.scrool.scrollTo(0, 0)
       },
       conceal(position) {
@@ -95,11 +98,8 @@
         }else if(this.recommendTop <= -position.y && this.$refs.detailsNavBar.itemactive != 'recommend'){
           this.$refs.detailsNavBar.itemactive = 'recommend'
         }
-        //
-        // (-position.y) == this.parameterTop
-        // this.$refs.detailsNavBar.itemactive == event
       },
-      // 首先实现点击到达在实现滚动切换
+      // 滚动到指定位置
       active(event) {
        switch(event){
          case 'pop':
@@ -123,7 +123,9 @@
           imgShow: this.iid.imgShow,
           imgDescribe: this.iid.imgDescribe
         }
-        console.log("添加到购物车");
+        this.tooltipId = !this.tooltipId
+        // 做一个防抖
+        this.setTimeHandle = setTimeout(()=>{this.tooltipId = !this.tooltipId},1000)
         this.$store.dispatch('addCar',this.iid)
       }
 
@@ -132,7 +134,7 @@
 </script>
 
 <style lang="scss">
-  .hxx {
+  .swipe {
     height: 400px;
   }
 
@@ -140,7 +142,7 @@
     position: relative;
     height: 100vh;
     z-index: 10;
-    background-color: #ffffff;
+    background-color: $whiteBackground;
   }
   .fhimg {
     height: 100%;

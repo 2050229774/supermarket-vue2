@@ -1,11 +1,22 @@
 <template>
   <div class="home">
     <nav-bar>
-      <template v-slot:center>智能商场</template>
+      <template v-slot:center>supermarket</template>
     </nav-bar>
-    <tab-control :namee="item" mtop="44px" @thisActive="skip($event)" ref='tabControl1' v-show="tabts" ></tab-control>
-    <bscroll @scroll="conceal($event)" ref="bscroll">
-      <swipe class="heig" :speed="speedd" :stopTime="stopTimee">
+    <!-- tab-control用于到指定位置代替bscroll中的tab-control -->
+    <tab-control
+      ref='tabControl1'
+      :namee="item"
+      mtop="44px"
+      @thisActive="skip($event)"
+      v-show="tabts">
+    </tab-control>
+    <bscroll
+      ref="bscroll"
+      @scroll="conceal($event)" >
+      <swipe
+        :speed="speedd"
+        :stopTime="stopTimee">
         <swipen-img way="https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g6/M00/0D/02/ChMkKmBdVPOIBjY1ABrPpgW1TcMAAMGvwLS3r4AGs--673.jpg" />
         <swipen-img way="https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g6/M00/0D/02/ChMkKmBdVOyIFHpqACAzMosIyoQAAMGvwESmdsAIDNK017.jpg" />
         <swipen-img way="https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g6/M00/0B/00/ChMkKmBamS-IdsvVABQVFnzWDOwAAL-UACX_LYAFBUu002.jpg" />
@@ -14,7 +25,10 @@
       </swipe>
       <recommend :item="itemm" idth="60px" />
       <recommend :item="itemmz" idth="30px" />
-      <tab-control :namee="item" @thisActive="skip($event)" ref='tabControl2'></tab-control>
+      <tab-control
+        ref='tabControl2'
+        :namee="item"
+        @thisActive="skip($event)"></tab-control>
       <data-display :good="skipGoods" @imgLoad="hgRefresh(vm,$refs.bscroll.refresh,1)" ></data-display>
     </bscroll>
     <back-top @click.native="BackTop()" v-show="seat"></back-top>
@@ -22,14 +36,15 @@
 </template>
 
 <script>
-  import NavBar from '../../components/common/navbar/NavBar.vue'
-  import Bscroll from '../../components/common/bscroll/bscroll.vue'
-  import BackTop from '../../components/common/BackTop/BackTop.vue'
+  import NavBar from 'components/common/navbar/NavBar.vue'
+  import Bscroll from 'components/common/bscroll/bscroll.vue'
+  import BackTop from 'components/common/BackTop/BackTop.vue'
+  import tabControl from 'components/common/tabControl/tabControl.vue'
+  import dataDisplay from 'components/common/dataDisplay/dataDisplay.vue'
+
   import Swipe from './home-child/Swipe.vue'
   import SwipenImg from './home-child/SwipeImg.vue'
   import Recommend from './home-child/recommend.vue'
-  import tabControl from '../../components/common/tabControl/tabControl.vue'
-  import dataDisplay from '../../components/common/dataDisplay/dataDisplay.vue'
 
   //模拟数据
   import {
@@ -41,7 +56,7 @@
   //网络请求
   import {
     getdata
-  } from "../../network/home.js"
+  } from "network/home.js"
 
   export default {
     name: 'Home',
@@ -77,6 +92,7 @@
     },
     methods: {
       skip(event) {
+        // 数据的跳转
         if (event === 'pop') {
           this.skipGoods = this.goods.pop;
         } else if (event === 'news') {
@@ -84,10 +100,12 @@
         } else if (event === 'sell') {
           this.skipGoods = this.goods.sell;
         }
+        // 确保吸顶效果和内部组件处于同一状态
         this.$refs.tabControl1.itemactive = event;
         this.$refs.tabControl2.itemactive = event;
       },
       BackTop() {
+        // 回到顶部
         this.$refs.bscroll.scrollTo(0, 0)
       },
       conceal(position) {
@@ -96,13 +114,14 @@
         this.tabts = (-position.y) > this.$refs.tabControl2.$el.offsetTop
       },
       hgRefresh(vm,func,delay) {
+        // 对高度更新做一个防抖
           if(vm.timer) clearTimeout(vm.timer);
           vm.timer = setTimeout(() => {
             func.apply(vm)
           },delay)
         }
     }
-    // 由于没有现成的服务器故网络请求部分暂时不做
+    // 由于没有现成的接口故网络请求部分暂时不做
     // created() {
     //   getdata().then(res => {
     //     console.log(res)
@@ -112,14 +131,19 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .home {
     position: relative;
     height: 100vh;
     overflow: hidden;
   }
-  
-  .heig {
+
+  .nav-bar {
+    background-color: $subject;
+    color: $whiteBackground;
+  }
+
+  .swipe {
     height: 200px;
   }
 </style>

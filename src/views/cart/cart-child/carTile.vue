@@ -21,6 +21,7 @@
     methods:{
       manage(){
         this.yn = !this.yn
+        //抛出点击事件
         this.$emit('cut')
       }
     }
@@ -31,7 +32,7 @@
   #cart-tile {
     height: 50px;
     line-height: 50px;
-    background-color: #f3f3f3;
+    background-color: $lsgray;
     position: relative;
     h1 {
       font-weight: 500;

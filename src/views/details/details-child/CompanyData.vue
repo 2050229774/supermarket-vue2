@@ -31,7 +31,7 @@
 <style lang="scss">
   #commpany {
     padding-bottom: 10px;
-    border-bottom: solid 1px #9b9b9b;
+    border-bottom: solid 1px $darkgray;
     .headline {
       font-size: 21px;
       margin: 0;
@@ -43,11 +43,11 @@
     .cost {
       span:nth-child(1){
         font-size: 30px;
-        color: #ff5500;
+        color: $nacarat;
       }
       span:nth-child(2) {
         font-size: 13px;
-        color: #9b9b9b;
+        color: $darkgray;
         text-decoration: line-through;
       }
     }
@@ -59,7 +59,7 @@
         font-size: 15px;
         flex: 1;
         text-align: center;
-        color: #aaa395;
+        color: $darkgray;
       }
     }
 

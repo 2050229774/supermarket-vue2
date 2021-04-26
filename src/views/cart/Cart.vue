@@ -19,8 +19,6 @@
 </template>
 
 <script>
-
-
   import carTile from "./cart-child/carTile.vue"
   import cartMessage from './cart-child/cartMessage.vue'
   import bottomNav from './cart-child/bottomNav.vue'
@@ -58,7 +56,7 @@
 <style lang="scss" scoped>
   #cart {
     height: 100vh;
-    background-color: #f3f3f3;
+    background-color: $lsgray;
     #cart-null {
       text-align: center;
       margin-top: 200px;

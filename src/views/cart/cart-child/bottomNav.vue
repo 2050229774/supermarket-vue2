@@ -44,8 +44,11 @@
         }
         this.yn  = !this.yn
         this.$root.Bus.$emit('checkAll',this.yn)
-        //有取消选中的情况
-        //全部为true的情况
+        //有取消选中的情况（取消对应的全选）
+
+        //全部为true的情况 （选中全选）
+        //绑定id所有元素全部为true，全选为ture，负责全选为false
+        //将所有id都添加到一个vuex数组中，因为数据会自动改变，最后遍历这个数组即可
       },
       deletes(){
         this.$root.Bus.$emit('deletes',this.yn)

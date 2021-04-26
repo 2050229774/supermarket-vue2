@@ -23,7 +23,7 @@
   #parameter {
     color: #a4a3b9;
     h3 {
-      color: #6c6c7a;
+      color: $darkgray;
       font-size: 20px;
       font-weight: 500;
     }

@@ -3,7 +3,7 @@ module.exports = {
   css: {
   	loaderOptions: {
   		sass: {
-  			 prependData: `@import "@/assets/css/base.scss";`
+  			 prependData: `@import "@/assets/css/variable.scss";`
   		}
   	}
   },

@@ -37,10 +37,12 @@
         type: Object
       }
     },
-    methods:{
-      activef(name){
+    methods: {
+      activef(name) {
+        // 修改为当前激活name
         this.itemactive = name;
-        this.$emit('thisActive',name)
+        // 抛出当前激活name
+        this.$emit('thisActive', name)
       }
     }
   }
@@ -52,19 +54,20 @@
     width: 100%;
     padding-bottom: 8px;
     margin-bottom: 2px;
-    background-color: #ffffff;
+    background-color: $whiteBackground;
     position: relative;
     z-index: 100;
+
     .tab-control-child {
       flex: 1;
       text-align: center;
     }
+
     .active {
-      color: #ffaaff;
-      border-bottom: solid 2px #ffaaff;
+      color: $activatePink;
+      border-bottom: solid 2px $activatePink;
       padding: 0 10px;
       padding-bottom: 6px;
-
     }
   }
 </style>

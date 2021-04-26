@@ -1,7 +1,7 @@
 <template>
-  <nav-bar backColor="#73d5ff">
+  <nav-bar >
     <template v-slot:left>
-      <div class="fhimg" @click="returnRouter()"><img src="../../../assets/img/details/返回 .png" alt="返回"></div>
+      <div class="fhimg" @click="returnRouter()"><img src="~assets/img/details/返回 .png" alt="返回"></div>
     </template>
     <template v-slot:center>
       <div class="tab-control">
@@ -11,13 +11,13 @@
       </div>
     </template>
     <template v-slot:right>
-      <div class="rest"><img src="../../../assets/img/details/其他.png" alt="其他"></div>
+      <div class="rest"><img src="~assets/img/details/其他.png" alt="其他"></div>
     </template>
   </nav-bar>
 </template>
 
 <script>
-  import NavBar from '../../../components/common/navbar/NavBar.vue'
+  import NavBar from 'components/common/navbar/NavBar.vue'
 
   export default {
     name: "detailsNavTab",
@@ -37,13 +37,11 @@
     },
     methods: {
       returnRouter() {
+        // 退回上一个路由
         this.$router.go(-1)
       },
-      active(event){
-        this.$emit('active',event)
-        console.log(event)
-      },
       activef(name){
+        // 抛出点击事件
         this.itemactive = name;
         this.$emit('thisActive',name)
       }
@@ -51,7 +49,11 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
+  .nav-bar {
+    background-color: $subject;
+    color: $whiteBackground;
+  }
   .tab-control {
     display: flex;
     width: 100%;
@@ -63,8 +65,8 @@
       text-align: center;
     }
     .active {
-      color: #ffaaff;
-      border-bottom: solid 2px #ffaaff;
+      color: $activatePink;
+      border-bottom: solid 2px $activatePink;
       padding: 0 10px;
       padding-bottom: 6px;
     }

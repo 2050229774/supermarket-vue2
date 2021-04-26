@@ -28,6 +28,7 @@
         this.$emit('imgLoad')
       },
       itemClick(iid){
+        // 携带id跳转到详情页
         this.$router.push('/details'+iid.name)
       }
     },
@@ -45,7 +46,7 @@
       width: 45%;
       padding: 2%;
       display: inline-block;
-      border: solid 1px #e3e3e3;
+      border: solid 1px $lightGray;
       margin-top: -1px;
       margin-right: -1px;
       >img {
@@ -61,7 +62,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
 
-        color: #9b9b9b;
+        color: $darkgray;
         font-size: 13px;
       }
 
@@ -69,13 +70,13 @@
         letter-spacing: -1px;
         span:nth-child(1) {
           font-size: 18px;
-          color: #ff0000;
+          color: $nacarat;
           margin-right: 5px;
         }
 
         span:nth-child(2) {
           font-size: 13px;
-          color: #9b9b9b;
+          color: $darkgray;
           text-decoration: line-through;
         }
       }
@@ -83,10 +84,10 @@
       .data-display-item-shop {
         p {
           font-size: 12px;
-          color: #bfbfbf;
+          color: $lightGray;
 
           span {
-            color: #ff0000;
+            color: $nacarat;
           }
         }
       }
