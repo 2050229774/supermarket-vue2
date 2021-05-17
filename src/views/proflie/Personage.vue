@@ -1,12 +1,33 @@
 <template>
-  <h1>个人</h1>
+  <div id="personage">
+    <userinfo :data="userinfo"></userinfo>
+    <indent></indent>
+  </div>
 </template>
 
 <script>
+  import Userinfo from './proflie-child/Userinfo.vue'
+  import Indent from './proflie-child/Indent.vue'
+
+  import {userinfo} from './proData/user.js'
+
   export default {
-    name: 'Personage'
+    name: 'Personage',
+    data(){
+      return {
+        userinfo
+      };
+    },
+    components: {
+      Userinfo,
+      Indent
+    }
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  #personage {
+    background-color: $lsgray;
+    height: 100vh;
+  }
 </style>

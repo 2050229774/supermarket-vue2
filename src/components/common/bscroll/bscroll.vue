@@ -27,7 +27,7 @@
       // BetterScroll高度是不准确的需等数据改变后再重新计算
       refresh() {
          this.scroll.refresh()
-         // console.log("重新计算BetterScroll高度")
+         console.log("重新计算BetterScroll高度",this.scroll)
       }
     },
     mounted(){
